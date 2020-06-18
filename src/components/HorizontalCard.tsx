@@ -15,8 +15,7 @@ const HorizontalCard = () => {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        elevation: 10,
-
+        elevation: 5,
         shadowRadius: 5,
       }}
     >

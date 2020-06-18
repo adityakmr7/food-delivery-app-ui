@@ -8,7 +8,7 @@ import { color } from "../constants";
 import SectionTitle from "../components/SectionTitle";
 import HeadingBox from "../components/HeadingBox";
 import CategoriesBox from "../components/CategoriesBox";
-import HorizontalCard from "../components/HorizontalBox";
+import HorizontalCard from "../components/HorizontalCard";
 import { StackProps } from "../interface/RouteParamList";
 interface HomeScreenProps {}
 
@@ -22,7 +22,10 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: color.tileBackground }}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ flex: 1, backgroundColor: color.tileBackground }}
+    >
       <HeadingBox />
       <View
         style={{
@@ -31,7 +34,7 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
           marginHorizontal: 20,
         }}
       >
-        <SectionTitle title={"Categories"} />
+        <SectionTitle title={"Categories"} viewAll={true} />
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {arr.map((item, index) => {
             return <CategoriesBox goto={navigateTo} key={index} />;
@@ -39,14 +42,14 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
         </ScrollView>
       </View>
       <View style={{ marginHorizontal: 20 }}>
-        <SectionTitle title={"Popular Now"} />
+        <SectionTitle title={"Popular Now"} viewAll={true} />
         <ScrollView showsVerticalScrollIndicator={false}>
           {arr.map((item, index) => {
             return <HorizontalCard key={index} />;
           })}
         </ScrollView>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
