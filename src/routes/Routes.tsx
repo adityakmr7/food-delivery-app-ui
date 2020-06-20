@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Fontisto, Octicons, AntDesign, EvilIcons } from "@expo/vector-icons";
-
+import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../pages/HomScreen";
 import { DetailScreen } from "../pages/DetailScreen";
 import { RouteParamList } from "../interface/RouteParamList";
@@ -23,7 +23,7 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
             },
             headerLeft: () => (
               <View style={{ paddingLeft: 20 }}>
-                <Fontisto name="checkbox-passive" size={24} color="black" />
+                <Ionicons name="ios-menu" size={24} color="black" />
               </View>
             ),
             headerTitle: () => (

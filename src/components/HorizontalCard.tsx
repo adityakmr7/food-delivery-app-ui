@@ -1,9 +1,29 @@
 import React from "react";
-import { View, Text, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  ImageSourcePropType,
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { color } from "../constants";
 const { width, height } = Dimensions.get("window");
-const HorizontalCard = () => {
+
+interface HorizontalProps {
+  goto: () => void;
+  image: ImageSourcePropType;
+  title: string;
+  subTitle: string;
+  price: number;
+}
+const HorizontalCard = ({
+  goto,
+  price,
+  image,
+  title,
+  subTitle,
+}: HorizontalProps) => {
   const star = [1, 2, 3, 4, 5];
   return (
     <View
@@ -20,14 +40,11 @@ const HorizontalCard = () => {
       }}
     >
       <View style={{ flex: 1, paddingLeft: 20 }}>
-        <Image
-          style={{ height: "70%", width: "70%" }}
-          source={require("../../assets/food-1.png")}
-        />
+        <Image style={{ height: "70%", width: "70%" }} source={image} />
       </View>
 
       <View style={{ flex: 1 }}>
-        <Text style={{ fontSize: 20 }}>Meaty Pizza</Text>
+        <Text style={{ fontSize: 20 }}>{title}</Text>
         <View style={{ flexDirection: "row" }}>
           {star.map((item, index) => {
             return (
@@ -42,8 +59,8 @@ const HorizontalCard = () => {
         </View>
         <Text>
           {" "}
-          <Text style={{ fontSize: 10, color: color.primary }}>$</Text>{" "}
-          <Text style={{ fontSize: 20 }}>12</Text>
+          <Text style={{ fontSize: 10, color: color.primary }}>$</Text>
+          <Text style={{ fontSize: 20 }}>{price}</Text>
         </Text>
       </View>
 
@@ -66,7 +83,12 @@ const HorizontalCard = () => {
             paddingVertical: 15,
           }}
         >
-          <Entypo name="plus" size={24} color={color.tileBackground} />
+          <Entypo
+            onPress={() => goto()}
+            name="plus"
+            size={24}
+            color={color.tileBackground}
+          />
         </View>
       </View>
     </View>

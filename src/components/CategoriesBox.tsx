@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, Image, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  ImageSourcePropType,
+} from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
 
@@ -9,9 +15,12 @@ const { width, height } = Dimensions.get("window");
 
 interface CategoriesProps {
   goto: () => void;
+  image: ImageSourcePropType;
+  title: string;
+  subTitle: string;
 }
 
-const CategoriesBox = ({ goto }: CategoriesProps) => (
+const CategoriesBox = ({ goto, image, title, subTitle }: CategoriesProps) => (
   <View
     style={{
       marginVertical: 15,
@@ -37,13 +46,10 @@ const CategoriesBox = ({ goto }: CategoriesProps) => (
           alignItems: "center",
         }}
       >
-        <Image
-          style={{ width: 50, height: 50 }}
-          source={require("../../assets/food-1.png")}
-        />
+        <Image style={{ width: 50, height: 50 }} source={image} />
       </View>
       <View style={{ paddingBottom: 10 }}>
-        <Text>Pizza</Text>
+        <Text>{title}</Text>
       </View>
       <AntDesign
         onPress={() => goto()}

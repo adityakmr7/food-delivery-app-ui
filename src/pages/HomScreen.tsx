@@ -10,13 +10,12 @@ import HeadingBox from "../components/HeadingBox";
 import CategoriesBox from "../components/CategoriesBox";
 import HorizontalCard from "../components/HorizontalCard";
 import { StackProps } from "../interface/RouteParamList";
+import { data } from "../data/dummyData";
 interface HomeScreenProps {}
 
 const { width, height } = Dimensions.get("window");
 
 function HomeScreen({ navigation, route }: StackProps<"Home">) {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
   const navigateTo = () => {
     navigation.push("Detail");
   };
@@ -36,16 +35,33 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
       >
         <SectionTitle title={"Categories"} viewAll={true} />
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {arr.map((item, index) => {
-            return <CategoriesBox goto={navigateTo} key={index} />;
+          {data.map((item, index) => {
+            return (
+              <CategoriesBox
+                image={item.img}
+                title={item.title}
+                subTitle={item.subtitle}
+                goto={navigateTo}
+                key={index}
+              />
+            );
           })}
         </ScrollView>
       </View>
       <View style={{ marginHorizontal: 20 }}>
         <SectionTitle title={"Popular Now"} viewAll={true} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          {arr.map((item, index) => {
-            return <HorizontalCard key={index} />;
+          {data.map((item, index) => {
+            return (
+              <HorizontalCard
+                image={item.img}
+                title={item.title}
+                subTitle={item.subtitle}
+                price={item.price}
+                goto={navigateTo}
+                key={index}
+              />
+            );
           })}
         </ScrollView>
       </View>
