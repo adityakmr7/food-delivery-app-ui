@@ -11,11 +11,12 @@ import { color } from "../constants";
 const { width, height } = Dimensions.get("window");
 
 interface HorizontalProps {
-  goto: () => void;
+  goto: (id: number) => void;
   image: ImageSourcePropType;
   title: string;
   subTitle: string;
   price: number;
+  id: number;
 }
 const HorizontalCard = ({
   goto,
@@ -23,6 +24,7 @@ const HorizontalCard = ({
   image,
   title,
   subTitle,
+  id,
 }: HorizontalProps) => {
   const star = [1, 2, 3, 4, 5];
   return (
@@ -84,7 +86,7 @@ const HorizontalCard = ({
           }}
         >
           <Entypo
-            onPress={() => goto()}
+            onPress={() => goto(id)}
             name="plus"
             size={24}
             color={color.tileBackground}

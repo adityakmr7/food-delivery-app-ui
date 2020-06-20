@@ -10,17 +10,24 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 import { color } from "../constants";
-import { useLinkProps } from "@react-navigation/native";
+
 const { width, height } = Dimensions.get("window");
 
 interface CategoriesProps {
-  goto: () => void;
+  goto: (id: number) => void;
   image: ImageSourcePropType;
   title: string;
   subTitle: string;
+  id: number;
 }
 
-const CategoriesBox = ({ goto, image, title, subTitle }: CategoriesProps) => (
+const CategoriesBox = ({
+  goto,
+  image,
+  title,
+  subTitle,
+  id,
+}: CategoriesProps) => (
   <View
     style={{
       marginVertical: 15,
@@ -52,7 +59,7 @@ const CategoriesBox = ({ goto, image, title, subTitle }: CategoriesProps) => (
         <Text>{title}</Text>
       </View>
       <AntDesign
-        onPress={() => goto()}
+        onPress={() => goto(id)}
         name="rightcircleo"
         size={24}
         color={color.primary}

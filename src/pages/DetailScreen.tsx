@@ -4,9 +4,13 @@ import { Center } from "../components/Center";
 import { AntDesign } from "@expo/vector-icons";
 import { color, ScreenHeight, ScreenWidth } from "../constants";
 import SectionTitle from "../components/SectionTitle";
+import { RouteProp } from "@react-navigation/native";
+import { StackProps } from "../interface/RouteParamList";
+
 interface DetailScreenProps {}
 
 export const DetailScreen: React.FC<DetailScreenProps> = ({}) => {
+  // const {productId} = route.params;
   return (
     <View style={{ flex: 1 }}>
       <View

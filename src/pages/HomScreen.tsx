@@ -1,10 +1,7 @@
 import React from "react";
 import { View, Dimensions } from "react-native";
-
 import { ScrollView } from "react-native-gesture-handler";
-
 import { color } from "../constants";
-
 import SectionTitle from "../components/SectionTitle";
 import HeadingBox from "../components/HeadingBox";
 import CategoriesBox from "../components/CategoriesBox";
@@ -16,8 +13,10 @@ interface HomeScreenProps {}
 const { width, height } = Dimensions.get("window");
 
 function HomeScreen({ navigation, route }: StackProps<"Home">) {
-  const navigateTo = () => {
-    navigation.push("Detail");
+  const navigateTo = (id: number) => {
+    navigation.navigate("Detail", {
+      productId: id,
+    });
   };
 
   return (
@@ -38,6 +37,7 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
           {data.map((item, index) => {
             return (
               <CategoriesBox
+                id={item.id}
                 image={item.img}
                 title={item.title}
                 subTitle={item.subtitle}
@@ -54,6 +54,7 @@ function HomeScreen({ navigation, route }: StackProps<"Home">) {
           {data.map((item, index) => {
             return (
               <HorizontalCard
+                id={item.id}
                 image={item.img}
                 title={item.title}
                 subTitle={item.subtitle}
